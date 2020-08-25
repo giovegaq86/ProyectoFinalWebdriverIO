@@ -5,33 +5,43 @@ const Page = require('./page');
 
 class ResultsPage extends Page {
     get resultList () { return $(".transition-results") }
-    get checkBoxAircraft () { return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-aircraft']") }
-    get checkBoxBus () { return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-bus']") }
-    get checkBoxTrain () { return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-train']") }
-    get label1 () {return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-aircraft']/parent::label[1]")}
-    get label2 () {return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-bus']/parent::label[1]")}
-    get label3 () {return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-train']/parent::label[1]")}
-    get divNoResults () {return $("//div[contains(text(), 't find any results')]")}
+    get AircraftCheckBox () { return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-aircraft']") }
+    get BusCheckBox () { return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-bus']") }
+    get TrainCheckBox () { return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-train']") }
+    get transport1Label () {return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-aircraft']/parent::label[1]")}
+    get transport2Label () {return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-bus']/parent::label[1]")}
+    get transport3Label () {return $("//div[@data-test='TransportOptionChoiceGroup']//input[@data-test='TransportOptionCheckbox-train']/parent::label[1]")}
+    get NoResultsDiv () {return $("//div[contains(text(), 't find any results')]")}
+    get BookButton () {return $("(//div[@data-test='BookingButton'])[1]")}
+    get ShowMeButton () {return $("//button[@class='ButtonPrimitive__StyledButtonPrimitive-q2qrvj-0 hYvXZ']")}
+    get cards () {return $$("//div[@data-test='ResultCardWrapper']")}
 
-    setCheckboxAircaft(checked){
-        let _currentStatus = this.checkBoxAircraft.getProperty('checked')
+    setAircaftCheckBox(checked){
+        let _currentStatus = this.AircraftCheckBox.getProperty('checked')
         if (_currentStatus != checked){
-            this.label1.click()
+            this.transport1Label.click()
         }
     }
 
-    setCheckboxBus(checked){
-        let _currentStatus = this.checkBoxBus.getProperty('checked')
+    setBusCheckBox(checked){
+        let _currentStatus = this.BusCheckBox.getProperty('checked')
         if (_currentStatus != checked){
-            this.label2.click()
+            this.transport2Label.click()
         }
     }
 
-    setCheckboxTrain(checked){
-        let _currentStatus = this.checkBoxTrain.getProperty('checked')
+    setTrainCheckBox(checked){
+        let _currentStatus = this.TrainCheckBox.getProperty('checked')
         if (_currentStatus != checked){
-            this.label3.click()
+            this.transport3Label.click()
         }
+    }
+
+    clickOnBookButton(){
+        if(this.ShowMeButton.isExisting({ timeout: 1000 })){
+            this.ShowMeButton.click()
+        }
+        this.BookButton.click()
     }
 }
 

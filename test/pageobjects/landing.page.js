@@ -12,45 +12,45 @@ class LandingPage extends Page {
 
     getPageUrl() { return this.pageUrl }
 
-    get inputOrigen () { return $("//div[@data-test='PlacePickerInput-origin']/input[@data-test='SearchField-input']") }
-    get inputDestino () { return $("//div[@data-test='PlacePickerInput-destination']/input[@data-test='SearchField-input']") }
-    get divDesde () { return $("(//div[@data-test='SearchField-inputWrapper']/input[@data-test='SearchFieldDateInput'])[1]") }
-    get buttonSetDates () { return $("//button[@data-test='SearchFormDoneButton']") }
-    get buttonPasajeros () {return $("//div[@class='PassengersAndBagsFieldstyled__PassengersFieldWrap-sc-1lwaoqz-2 fsEazz']")}
-    get buttonAddAdulto () {return $("(//button[@aria-label='increment'])[1]")}
-    get buttonAddNino () {return $("(//button[@aria-label='increment'])[2]")}
-    get buttonAddBebe () {return $("(//button[@aria-label='increment'])[3]")}
-    get buttonSearch () {return $("//a[@data-test='LandingSearchButton']")}
-    get buttonDone () {return $("//button[@data-test='PassengersFieldFooter-done']")}
-    fechaDesde (fechaD) { return $("//div[@data-value='" + fechaD + "']")}
-    fechaHasta (fechaH) { return $("//div[@data-value='" + fechaH + "']")}
-    buttonOrigen (origen) {return $("(//div[@class='PlacePickerstyled__PlacePickerItemName-hrtzfp-6 jVKPfo' and contains(text(), '" + origen + "')])[1]")}
-    buttonDestino (destino) {return $("(//div[@class='PlacePickerstyled__PlacePickerItemName-hrtzfp-6 jVKPfo' and contains(text(), '" + destino + "')])[1]")}
+    get OriginInput () { return $("//div[@data-test='PlacePickerInput-origin']/input[@data-test='SearchField-input']") }
+    get DestinyInput () { return $("//div[@data-test='PlacePickerInput-destination']/input[@data-test='SearchField-input']") }
+    get fromDiv () { return $("(//div[@data-test='SearchField-inputWrapper']/input[@data-test='SearchFieldDateInput'])[1]") }
+    get SetDatesButton () { return $("//button[@data-test='SearchFormDoneButton']") }
+    get PassangerButton () {return $("//div[@class='PassengersAndBagsFieldstyled__PassengersFieldWrap-sc-1lwaoqz-2 fsEazz']")}
+    get AddAdultButton () {return $("(//button[@aria-label='increment'])[1]")}
+    get AddChildButton () {return $("(//button[@aria-label='increment'])[2]")}
+    get AddBabyButton () {return $("(//button[@aria-label='increment'])[3]")}
+    get SearchButton () {return $("//a[@data-test='LandingSearchButton']")}
+    get DoneButton () {return $("//button[@data-test='PassengersFieldFooter-done']")}
+    fromDate (fDate) { return $("//div[@data-value='" + fDate + "']")}
+    toDate (tDdate) { return $("//div[@data-value='" + tDdate + "']")}
+    OriginButton (origin) {return $("(//div[@class='PlacePickerstyled__PlacePickerItemName-hrtzfp-6 jVKPfo' and contains(text(), '" + origin + "')])[1]")}
+    DestinyButton (destiny) {return $("(//div[@class='PlacePickerstyled__PlacePickerItemName-hrtzfp-6 jVKPfo' and contains(text(), '" + destiny + "')])[1]")}
 
-    ingresarDatos (origen, destino, fechaD, fechaH) {
-        // Seleccionar origen y destino
-        this.inputOrigen.setValue(origen)
-        this.buttonOrigen(origen).click()
-        this.inputDestino.setValue(destino)
-        this.buttonDestino(destino).click()
+    searchFlies (origin, destiny, fDate, tDate) {
+        // Select origin and destiny
+        this.OriginInput.setValue(origin)
+        this.OriginButton(origin).click()
+        this.DestinyInput.setValue(destiny)
+        this.DestinyButton(destiny).click()
 
-        // Seleccionar fecha desde y fecha hasta
-        this.divDesde.click()
-        this.fechaDesde(fechaD).click()
-        this.fechaHasta(fechaH).click()
-        this.buttonSetDates.click()
+        // Select from and to dates
+        this.fromDiv.click()
+        this.fromDate(fDate).click()
+        this.toDate(tDate).click()
+        this.SetDatesButton.click()
 
-        // Seleccionar pasajeros
-        this.buttonPasajeros.click()
-        this.buttonAddAdulto.click()
-        this.buttonAddNino.click()
-        this.buttonAddNino.click()
-        this.buttonAddNino.click()
-        this.buttonAddBebe.click()
-        this.buttonDone.click()
+        // Select passengers
+        this.PassangerButton.click()
+        this.AddAdultButton.click()
+        this.AddChildButton.click()
+        this.AddChildButton.click()
+        this.AddChildButton.click()
+        this.AddBabyButton.click()
+        this.DoneButton.click()
 
-        //Buscar
-        this.buttonSearch.click()
+        //Search
+        this.SearchButton.click()
     }
 
     /**
